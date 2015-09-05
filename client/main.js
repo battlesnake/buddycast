@@ -11,8 +11,6 @@ Template.postMessage.events({
 			text: $text.val()
 		};
 
-		console.log(message)
-
 		Meteor.call('messageInsert', message);
 	}
 });
