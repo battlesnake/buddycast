@@ -1,3 +1,10 @@
+var message = {
+	userId: 'GOD',
+	text: "First message ever created."
+};
+
+Meteor.call('messageInsert', message);
+
 Meteor.call('userInsert', function(err, userId) {
 
 	var message = {
