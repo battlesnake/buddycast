@@ -1,13 +1,15 @@
 
 // Make sure the user has an userId
 if(typeof Session.get('userId') === 'undefined') {
+	console.log('no userId found so adding one');
 	Meteor.call('userInsert', function(err, userId) {
+		console.log('userId was added')
 		Session.setPersistent('userId', userId)
+		Meteor.subscribe('userById', Session.get('userId'));
 	});
+} else {
+	Meteor.subscribe('userById', Session.get('userId'));
 }
-
-// Subscribe to the user object
-Meteor.subscribe('userById', Session.get('userId'));
 
 // postMessage events
 Template.postMessage.events({
