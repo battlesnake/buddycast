@@ -1,0 +1,16 @@
+<head>
+	<title>BuddyCast</title>
+</head>
+
+<body>
+	<h1>Welcome to BuddyCast</h1>
+
+	{{> postMessage}}
+</body>
+
+<template name="postMessage">
+	<form>
+		<textarea name="text" cols="2"></textarea> 
+		<button type="submit">Post!</button>
+	</form>
+</template>
