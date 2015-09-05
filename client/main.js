@@ -1,6 +1,4 @@
-Template.postMessage.helpers({
-
-});
+Meteor.subscribe('messages');
 
 Template.postMessage.events({
 	'submit form': function (e, template) {
@@ -14,4 +12,13 @@ Template.postMessage.events({
 		Meteor.call('messageInsert', message);
 	}
 });
+
+
+Template.showMessages.helpers({
+	'messages': function() {
+		var messages = Messages.find({});
+		console.log(messages)
+		return messages;
+	}
+})
 
