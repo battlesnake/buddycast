@@ -6,20 +6,20 @@
 	<h1>Welcome to BuddyCast</h1>
 
 	{{> postMessage}}
-	{{> showMessages}}
+	{{> showMessage}}
 </body>
 
 <template name="postMessage">
 	<form>
-		<textarea name="text" cols="2"></textarea> 
+		<textarea name="text"></textarea> 
 		<button type="submit">Post!</button>
 	</form>
 </template>
 
-<template name="showMessages">
-	<ul>	
-	{{#each messages}}
-		<li>{{text}}</li>
-	{{/each}}
-	</ul>
+<template name="showMessage">
+	{{message}}
+	<div>
+		<button>+</button>
+		<button>-</button>
+	</div>
 </template>
