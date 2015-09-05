@@ -36,13 +36,21 @@ Template.postMessage.events({
 	}
 });
 
-// showMessage helpers
+// showMessage helpers and events
 Template.showMessage.helpers({
 	'message': function() {
 		var user = Users.findOne();
-		return user.currentMessage.text;
+		return user ? user.currentMessage.text : '';
 	}
-})
-
+});
+Template.showMessage.events({
+	'click #yesBtn': function() {
+		console.log('yesBtn')
+		Meteor.call('userTrusts', Session.get('userId'), true);
+	},
+	'click #noBtn': function() {
+		Meteor.call('userTrusts', Session.get('userId'), false);
+	}
+});
 
 
