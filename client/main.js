@@ -1,4 +1,4 @@
-
+/*
 // Make sure the user has an userId
 if(typeof Session.get('userId') === 'undefined') {
 	console.log('no userId found so adding one');
@@ -54,5 +54,4 @@ Template.showMessage.events({
 		Meteor.call('userTrusts', Session.get('userId'), false);
 	}
 });
-
-
+*/
