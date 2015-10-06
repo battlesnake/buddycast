@@ -23,4 +23,5 @@ describe('Messages', function() {
       expect(Users.findOne({_id: message.userId})).not.toBe(undefined);
     });
   });
+  
 });

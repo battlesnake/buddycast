@@ -10,4 +10,5 @@ describe('Users', function() {
       expect(Users.find({_id: user._id}).count()).toBe(1);
     });
   });
+  
 });

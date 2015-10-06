@@ -7,7 +7,7 @@ Feature: interaction with writers
   Background:
     Given I am a writer
 
-  @dev
+  @ignore
   Scenario: send message
     When I send a message
     Then it is associated with my reader id

@@ -5,7 +5,7 @@ Feature: interaction with readers
   So that I am in the know on what is most important to me
 
   Background:
-    Given I am a reader
+    Given messages and other readers exist
 
   @dev
   Scenario: new reader interaction
@@ -13,23 +13,23 @@ Feature: interaction with readers
     And I access the system
     Then I am assigned a unique id
 
-  @dev
+  @ignore
   Scenario: known reader interaction
     When I access the system
     Then my unique id is recognized
 
-  @dev
+  @ignore
   Scenario: reader gets most relevant message
     When I access the system
     Then I get the most relevant message
 
-  @dev
+  @ignore
   Scenario: reader considers message relevant
     When I mark current message as relevant
     Then my connection to its writer is strengthened
     And a new message is shown
 
-  @dev
+  @ignore
   Scenario: reader considers message not relevant
     When I mark current message as not relevant
     Then my connection to its writer is weakened

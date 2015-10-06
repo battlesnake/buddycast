@@ -1,9 +1,11 @@
-/*
-// Make sure the user has an userId
 if(typeof Session.get('userId') === 'undefined') {
-	console.log('no userId found so adding one');
+	Meteor.call('user-service/create', function(err, userId) {
+		Session.setPersistent('userId', userId)
+	});
+}
+
+/*if(typeof Session.get('userId') === 'undefined') {
 	Meteor.call('userInsert', function(err, userId) {
-		console.log('userId was added')
 		Session.setPersistent('userId', userId)
 		Meteor.subscribe('userById', Session.get('userId'));
 	});
