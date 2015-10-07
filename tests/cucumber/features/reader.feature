@@ -13,9 +13,10 @@ Feature: interaction with readers
     And I access the system
     Then I am assigned a unique id
 
-  @ignore
+  @dev
   Scenario: known reader interaction
-    When I access the system
+    When I am a known reader
+    And I access the system
     Then my unique id is recognized
 
   @ignore
