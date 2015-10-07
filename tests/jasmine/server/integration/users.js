@@ -10,5 +10,11 @@ describe('Users', function() {
       expect(Users.find({_id: user._id}).count()).toBe(1);
     });
   });
-  
+
+  it('should create with unique id', function () {
+    Meteor.call('user-service/create', function(err, userId) {
+      expect(Users.find({_id: userId}).count()).toBe(1);
+    });
+  });
+
 });
