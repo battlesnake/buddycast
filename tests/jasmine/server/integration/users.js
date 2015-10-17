@@ -1,4 +1,4 @@
-describe('Users', function() {
+describe('Buddycast.Collections.Users', function() {
 
   beforeAll(function() {
     Meteor.call("fixtures/clean");
@@ -6,14 +6,14 @@ describe('Users', function() {
   });
 
   it('should have a unique id', function() {
-    Users.find().forEach(function(user) {
-      expect(Users.find({_id: user._id}).count()).toBe(1);
+    Buddycast.Collections.Users.find().forEach(function(user) {
+      expect(Buddycast.Collections.Users.find({_id: user._id}).count()).toBe(1);
     });
   });
 
   it('should create with unique id', function () {
-    Meteor.call('user-service/create', function(err, userId) {
-      expect(Users.find({_id: userId}).count()).toBe(1);
+    Meteor.call('user/create', function(err, userId) {
+      expect(Buddycast.Collections.Users.find({_id: userId}).count()).toBe(1);
     });
   });
 

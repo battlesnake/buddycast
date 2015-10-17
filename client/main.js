@@ -1,8 +1,20 @@
 if(typeof Session.get('userId') === 'undefined') {
-	Meteor.call('user-service/create', function(err, userId) {
+	Meteor.call('user/create', function(err, userId) {
 		Session.setPersistent('userId', userId)
 	});
 }
+
+Meteor.subscribe('content', Session.get('userId'));
+
+Template.content.helpers({
+	message() {
+		var message = Buddycast.Collections.Messages.findOne();
+
+		if(message) {
+			return message;
+		}
+	}
+});
 
 /*if(typeof Session.get('userId') === 'undefined') {
 	Meteor.call('userInsert', function(err, userId) {

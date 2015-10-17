@@ -1,6 +1,7 @@
 module.exports = function () {
 
   var knownReaderId;
+  var keyUserId = '__amplify__userId';
 
   this.Given(/^messages and other readers exist$/, function () {
     server.call('fixtures/clean');
@@ -9,34 +10,37 @@ module.exports = function () {
 
   this.When(/^I am a new reader$/, function () {
     client.url(process.env.ROOT_URL);
-    client.localStorage('DELETE', '__amplify__userId');
+    client.localStorage('DELETE', keyUserId);
+    client.url(process.env.ROOT_URL);
   });
 
   this.When(/^I am a known reader$/, function () {
-    knownReaderId = server.call('fixtures/find-one/user')._id;
     client.url(process.env.ROOT_URL);
+    knownReaderId = server.call('fixtures/find-one-user')._id;
     client.localStorage('POST', {
-        key: '__amplify__userId',
+        key: keyUserId,
         value: knownReaderId
     });
-  });
-
-  this.When(/^I access the system$/, function () {
     client.url(process.env.ROOT_URL);
   });
 
   this.Then(/^I am assigned a unique id$/, function () {
     client.waitUntil(function () {
-      return client.localStorage('GET', '__amplify__userId').value !== null;
+      return client.localStorage('GET', keyUserId).value !== null;
     }, 10000);
 
-    expect(client.localStorage('GET', '__amplify__userId').value)
+    expect(client.localStorage('GET', keyUserId).value)
       .not.toBe(null);
   });
 
   this.Then(/^my unique id is recognized$/, function () {
-    expect(client.localStorage('GET', '__amplify__userId').value)
+    expect(client.localStorage('GET', keyUserId).value)
       .toBe(knownReaderId);
+  });
+
+  this.Then(/^I get the most relevant message$/, function () {
+    // Write the automation code here
+    pending();
   });
 
 };

@@ -1,4 +1,11 @@
-/*Meteor.publish('userById', function(userId) {
-	console.log('userById', userId)
-	return Users.find({ _id: userId });
-});*/
+Meteor.publish('content', function(userId) {
+	if(Match.test(userId, String)) {
+		var	content = Buddycast.Collections.Messages.find({_id: Buddycast.Services.Courier.deliver(userId)});
+
+		if (content) {
+			return content;
+		}
+
+	  return this.ready();
+	};
+});

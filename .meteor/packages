@@ -25,7 +25,8 @@ velocity:html-reporter
 xolvio:cucumber
 dburles:factory
 anti:fake
-xolvio:cleaner
 aldeed:collection2
 practicalmeteor:chai
 velocity:helpers
+buddycast:core
+buddycast:fixtures

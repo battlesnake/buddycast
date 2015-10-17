@@ -10,18 +10,16 @@ Feature: interaction with readers
   @dev
   Scenario: new reader interaction
     When I am a new reader
-    And I access the system
     Then I am assigned a unique id
 
   @dev
   Scenario: known reader interaction
     When I am a known reader
-    And I access the system
     Then my unique id is recognized
 
-  @ignore
-  Scenario: reader gets most relevant message
-    When I access the system
+  @dev
+  Scenario: known reader gets most relevant message
+    When I am a known reader
     Then I get the most relevant message
 
   @ignore
