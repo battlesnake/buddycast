@@ -1,10 +1,13 @@
 if(typeof Session.get('userId') === 'undefined') {
 	Meteor.call('user/create', function(err, userId) {
-		Session.setPersistent('userId', userId)
+		Session.setPersistent('userId', userId);
 	});
 }
 
-Meteor.subscribe('content', Session.get('userId'));
+Tracker.autorun(function() {
+	Meteor.subscribe('content', Session.get('userId'));
+});
+
 
 Template.content.helpers({
 	message() {
@@ -12,7 +15,11 @@ Template.content.helpers({
 
 		if(message) {
 			return message;
-		}
+		} else {
+			return {
+				text: 'Loading...'
+			};
+		};
 	}
 });
 
