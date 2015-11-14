@@ -46,12 +46,26 @@ module.exports = function () {
   });
 
   this.Then(/^I get the most relevant message$/, function () {
-    expect(client.isVisible('#content')).toBe(true);
+    expect(client.isVisible('#message')).toBe(true);
     client.waitUntil(function () {
-      return client.getText('#content') !== 'Loading...';
+      return client.getText('#message') !== 'Loading...';
     }, 10000);
-    expect(client.getText('#content')).not.toBe('Loading...');
-    expect(client.getText('#content').length).not.toBe(0);
+    expect(client.getText('#message').length).not.toBe(0);
+  });
+
+  this.When(/^I mark current message as relevant$/, function () {
+    // Write the automation code here
+    pending();
+  });
+
+  this.Then(/^my connection to its writer is strengthened$/, function () {
+    // Write the automation code here
+    pending();
+  });
+
+  this.Then(/^a new message is shown$/, function () {
+    // Write the automation code here
+    pending();
   });
 
 };

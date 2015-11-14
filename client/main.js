@@ -4,25 +4,6 @@ if(typeof Session.get('userId') === 'undefined') {
 	});
 }
 
-Tracker.autorun(function() {
-	Meteor.subscribe('content', Session.get('userId'));
-});
-
-
-Template.content.helpers({
-	message() {
-		var message = Buddycast.Collections.Messages.findOne();
-
-		if(message) {
-			return message;
-		} else {
-			return {
-				text: 'Loading...'
-			};
-		};
-	}
-});
-
 /*if(typeof Session.get('userId') === 'undefined') {
 	Meteor.call('userInsert', function(err, userId) {
 		Session.setPersistent('userId', userId)

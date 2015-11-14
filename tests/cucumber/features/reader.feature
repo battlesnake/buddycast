@@ -22,7 +22,7 @@ Feature: interaction with readers
     When I am a known reader
     Then I get the most relevant message
 
-  @ignore
+  @dev
   Scenario: reader considers message relevant
     When I mark current message as relevant
     Then my connection to its writer is strengthened

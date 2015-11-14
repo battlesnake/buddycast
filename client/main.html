@@ -7,20 +7,12 @@
 		<h1>Welcome to BuddyCast</h1>
 	</div>
 
-	<div id="content">
-		{{> content}}
-	</div>
+  {{> message}}
 
 	<!--{{> showMessage}}-->
 
 	<!--{{> postMessage}}-->
 </body>
-
-<template name="content">
-	{{#with message}}
-		{{text}}
-	{{/with}}
-</template>
 
 <!--<template name="showMessage">
 	{{message}}
