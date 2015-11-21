@@ -1,5 +1,11 @@
 Buddycast.Collections.Users = new Mongo.Collection('users');
-Buddycast.Collections.Users.attachSchema(new SimpleSchema());
+
+Buddycast.Collections.Users.attachSchema(new SimpleSchema({
+	buddies: {
+		type: [String],
+		defaultValue: []
+	}
+}));
 
 /*Meteor.methods({
 	userInsert: function() {

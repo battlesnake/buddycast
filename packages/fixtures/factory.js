@@ -16,11 +16,23 @@ Buddycast.Utils.factory = function() {
 
   _.times(10, Buddycast.Utils.createUser);
 
-  Buddycast.Collections.Users.find().forEach(function(user) {
+  _.times(5, Buddycast.Utils.createMessage);
+
+  var users = Buddycast.Collections.Users.find().fetch();
+  users.forEach(function(user) {
     while(_.random(100) < 50) {
       Buddycast.Utils.createMessage({userId: user._id});
     }
+
+    _.times(2, function() {
+      Meteor.call('user/rank-up', user._id,
+        (users[_.random(users.length-1)])._id);
+    });
+
+    while(_.random(100) < 50) {
+      Meteor.call('user/rank-up', user._id,
+        (users[_.random(users.length-1)])._id);
+    }
   });
 
-  _.times(5, Buddycast.Utils.createMessage);
 };
